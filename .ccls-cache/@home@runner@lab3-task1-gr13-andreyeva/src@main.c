@@ -1,8 +1,7 @@
-
 #include <stdio.h>
 
-//функция подсчета вхождения буквы в предложении
 int countOccurrences(char *str, char letter) {
+
 
   int count = 0;
   while (*str != '\0') { // пока нет конца строки
