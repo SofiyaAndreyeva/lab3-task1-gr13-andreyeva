@@ -1,4 +1,4 @@
-#include <stdio.h>
+
 #include "count.h"
 int countOccurrences(char *str, char letter) {
 

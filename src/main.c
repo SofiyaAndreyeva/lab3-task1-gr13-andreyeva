@@ -1,26 +1,34 @@
-#include "count.c"
+#include <stdio.h>
+#include "count.h"
+
 int main() {
-  char sentence[1000];
-  char letter;
+    char sentence[1000];
+    char letter;
 
-  //ввод предложения
-  printf("Введите предложение: ");
-  fgets(sentence, sizeof(sentence), stdin);
+    // Ввод предложения
+    printf("Введите предложение: ");
+    if (fgets(sentence, sizeof(sentence), stdin) == NULL) {
+        printf("Ошибка при чтении предложения.\n");
+        return 1;
+    }
 
-  //ввод искаемой буквы
-  printf("Введите букву для поиска: ");
-  scanf("%c", &letter);
+    // Ввод искомой буквы
+    printf("Введите букву для поиска: ");
+    if (scanf(" %c", &letter) != 1) {
+        printf("Ошибка при чтении буквы.\n");
+        return 1;
+    }
 
-  // подсчет количества
-  int occurrences = countOccurrences(sentence, letter);
+    // Подсчет количества
+    int occurrences = countOccurrences(sentence, letter);
 
-  //вывод результата
-  if (occurrences == 0) {
-    printf("Буквы '%c' нет в предложении.\n", letter);
-  } else {
-    printf("Буква '%c' встречается %d раз(а) в предложении.\n", letter,
-           occurrences);
-  }
+    // Вывод результата
+    if (occurrences == 0) {
+        printf("Буквы '%c' нет в предложении.\n", letter);
+    } else {
+        printf("Буква '%c' встречается %d раз(а) в предложении.\n", letter,
+               occurrences);
+    }
 
-  return 0;
+    return 0;
 }
